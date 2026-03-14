@@ -1,0 +1,47 @@
+`timescale 1ns/1ps
+
+module tb;
+
+reg clk;
+reg rst;
+reg x;
+wire out;
+
+o_s_101 uut (          // use overlapping module
+    .clk(clk),
+    .rst(rst),
+    .x(x),
+    .out(out)
+);
+
+// clock generation
+always #5 clk = ~clk;
+
+initial
+begin
+    $dumpfile("dump.vcd");
+    $dumpvars(0,tb);
+
+    clk = 0;
+    rst = 1;
+    x = 0;
+
+    #10 rst = 0;
+
+    // input sequence (shows overlapping clearly)
+    x = 1; #10;
+    x = 0; #10;
+    x = 1; #10;
+    x = 0; #10;
+    x = 1; #10;
+
+    #20 $finish;
+end
+
+initial
+begin
+$monitor("time=%0t clk=%b rst=%b x=%b out=%b",
+          $time, clk, rst, x, out);
+end
+
+endmodule
