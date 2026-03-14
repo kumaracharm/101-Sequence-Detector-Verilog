@@ -30,12 +30,16 @@ Testbenches are included to simulate and verify the functionality of the design.
 ## Repository Structure
 
 ```text
-101-sequence-detector/
+101-Sequence-Detector-Verilog/
 │
-├── overlapping_101_detector.v
-├── non_overlapping_101_detector.v
-├── tb_overlapping.v
-├── tb_non_overlapping.v
+├── 01overlapping_detector.v
+├── 02tb_overlapping.v
+├── 03overlap.jpeg
+│
+├── 04non_overlapping_detector.v
+├── 05tb_non_overlapping.v
+├── 06non_overlap.jpeg
+│
 └── README.md
 ```
 
